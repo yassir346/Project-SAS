@@ -37,8 +37,8 @@ int main()
     month[4]=1;
     year[4]=2020;
 
-    nom[0][20]='misa';
-    prenom[0][20]='nawfal';
+    nom[0]='misa';
+    prenom[0]='nawfal';
     number[0][20]='0611111111';
     age[0]=20;
     statut[0]=1;
@@ -194,7 +194,7 @@ case 2:
 
 case 3:
 
-
+    found = 0;
     printf("entrez le numero de reservation que vous voulez supprimer : ");
     scanf("%d", &ref_S);
 
@@ -212,12 +212,15 @@ case 3:
             month[i] = month[x - 1];
             year[i] = year[x - 1];
 
+            x--;
             found++;
+            printf("la reservation est supprimée avec succes.\n");
             break;
-        }
-    }
 
-    if(found == 0) printf("\nReference non disponible.\n");
+        }
+
+    }
+    if(found == 0) printf("reference n'est pas disponible.\n");
 
     break;
 
@@ -225,24 +228,25 @@ case 3:
 
 case 4:
 
-
+    found = 0;
     printf("entrez la reference du reservation que vous voulez afficher : \n");
     scanf("%d", &ref_A);
 
     for ( int i = 0; i < x; i++){
 
         if(ref_A == ref[i]){
-
-            printf("le nom : %s\n", nom[i]);
-            printf("le prenom : %s\n", prenom[i]);
-            printf("le telephone : %s\n", number[i]);
-            printf("l'age : %d\n", age[i]);
-            printf("le reference : %d\n", ref[i]);
-            printf("la date : %d/%d/%d\n\n\n", day[i], month[i], year[i]);
+            printf("le nom : %s\n", nom[x]);
+            printf("le prenom : %s\n", prenom[x]);
+            printf("le telephone : %s\n", number[x]);
+            printf("l'age : %d\n", age[x]);
+            printf("le reference : %d\n", ref[x]);
+            printf("la date : %d/%d/%d\n\n\n", day[x], month[x], year[x]);
+            found++;
             break;
         }
     }
 
+        if(found == 0) printf("reservation non disponible");
 
 
     break;
@@ -290,7 +294,7 @@ case 8:
     return 0;
 
 */
-    default : printf("\n\n\n\n\n\nnumber incorrect. entrez un autre livre\n\n\n\n\n\n");
+    default : printf("\n\n\n\n\n\nnombre incorrect. entrez un autre nombre valide\n\n\n\n\n\n");
 }
 }
 
