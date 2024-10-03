@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1727892911 source:c:\users\youcode\desktop\c challenges\final_project_sas\main.c
+	<stdio.h>
+	<stdlib.h>
+
