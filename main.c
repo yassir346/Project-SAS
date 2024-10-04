@@ -24,9 +24,16 @@ int main()
     int ref_R;
     int ref_S;
     int ref_A;
+    int ref_rech;
 
     int choix2;
     int choix3;
+    int choix4;
+
+    int sum_age = 0;
+    int moyenne;
+    int a, b, c, d;
+
 
 
     char nom_t[20], prenom_t[20], number_t[20];
@@ -86,7 +93,7 @@ int main()
     year[3]=2025;  */
 
 
-    while(choix <= 8 || choix >= 8){
+    while(choix != 8){
         //Affichage du tableau principale
         printf("1. Ajoutez une reservation.\n");
         printf("2. Modifier une reservation.\n");
@@ -281,16 +288,16 @@ case 5: //trier les reservations************************************************
                         strcpy(prenom[j], prenom_t);
 
                         strcpy(number_t, number[i]);
-                        strcpy(telephone[i], number[j]);
-                        strcpy(telephone[j], number_t);
+                        strcpy(number[i], number[j]);
+                        strcpy(number[j], number_t);
 
                         age_t = age[i];
                         age[i] = age[j];
                         age[j] = age_t;
 
                         statut_t = statut[i];
-                        tut[i] = statut[j];
-                        atut[j] = statut_t;
+                        statut[i] = statut[j];
+                        statut[j] = statut_t;
 
                         day_t = day[i];
                         day[i] = day[j];
@@ -321,8 +328,8 @@ case 5: //trier les reservations************************************************
                     for (int j = 0; j < x; j++){
                             if(year[i] > year[j] || year[i]==year[j] && month[i] > month[j] || year[i]==year[j] && month[i]==month[j] && day[i] > day[j]){
                                                      statut_t = statut[i];
-                        stut[i] = statut[j];
-                        atut[j] = statut_t;
+                        statut[i] = statut[j];
+                        statut[j] = statut_t;
 
                         strcpy (nom_t, nom[i]);
                         strcpy (nom[i], nom[j]);
@@ -332,17 +339,17 @@ case 5: //trier les reservations************************************************
                         strcpy(prenom[i], prenom[j]);
                         strcpy(prenom[j], prenom_t);
 
-                        strcpy(number_t, telephone[i]);
-                        strcpy(telephone[i], telephone[j]);
-                        strcpy(telephone[j], number_t);
+                        strcpy(number_t, number[i]);
+                        strcpy(number[i], number[j]);
+                        strcpy(number[j], number_t);
 
                         age_t = age[i];
                         age[i] = age[j];
                         age[j] = age_t;
 
                         statut_t = statut[i];
-                        tut[i] = statut[j];
-                        atut[j] = statut_t;
+                        statut[i] = statut[j];
+                        statut[j] = statut_t;
 
                         day_t = day[i];
                         day[i] = day[j];
@@ -369,28 +376,128 @@ case 5: //trier les reservations************************************************
 
     break;
 
-case 6:
+case 6://rechercher une reservation*************************************************************************************
 
-    for(i=0 ; i<x ; i++){
-        f = f + quantite[i];
+
+    printf("Entrez la reference de la référence réservation à rechercher : ");
+    scanf("%d", &ref_rech);
+    found = 0;
+
+    for(int i = 0; i < x ; i++){
+
+        if(ref_rech == ref[i]){
+
+            found++;
+            printf("Une reservation est trouvée avec la reference dont vous avez recherché.\nCliquez sur le choix 4 pour afficher ces details.\n");
+            break;
+        }
     }
-    printf("le nombre de livres est %d \n", f);
+
+
+case 7://Les statistiques***************************************************************************************************
+
+
+    printf("Quelles Statistiques voudriez-vous afficher :\n");
+    printf("La moyenne d'age.\n");
+    printf("Afficher le nombre de patients par tranche d'âge");
+    printf("le nombre total de réservations par statut");
+    printf("Entrez un choix : ");
+    scanf("%d", &choix4);
+
+    if(choix4 == 1){
+
+        for(int i = 0; i < x ; i++){
+
+            sum_age += age[i];
+
+        }
+        moyenne = sum_age / x;
+        printf("Lamouenne d'age des patients est : %d", moyenne);
+
+    }
+
+    else if(choix == 2){
+
+        a = 0;
+        b = 0;
+        c = 0;
+        for(int i=0 ; i < x ; i++){
+            if(age[i] <= 18)
+              a++;
+        }
+        printf("le nombre de patients qui sont entre 0-18 ans est : %d \n", a);
+
+        for(int i=0 ; i < x ; i++){
+            if(age[i] >= 19 && age[i] < 36)
+              b++;
+        }
+        printf("le nombre de patients qui sont entre 19-35 ans est : %d \n", b);
+
+        for(int i=0 ; i < x ; i++){
+            if(age[i] > 35)
+              c++;
+        }
+        printf("le nombre de patients qui sont superieurs à 36 ans est  : %d \n", c);
+
+    }
+
+    else if (choix4 == 3){
+
+        a = 0;
+        b = 0;
+        c = 0;
+        d = 0;
+
+        for(int i = 0 ; i < x ; i++){
+
+            if (statut == 1){
+                a++;
+            }
+        }
+        printf("Le nombre total des reservations valides est : %d", a);
+
+        for(int i = 0 ; i < x ; i++){
+
+            if (statut == 2){
+                b++;
+            }
+        }
+        printf("Le nombre total des reservations valides est : %d", b);
+
+        for(int i = 0 ; i < x ; i++){
+
+            if (statut == 3){
+                c++;
+            }
+        }
+        printf("Le nombre total des reservations valides est : %d", c);
+
+        for(int i = 0 ; i < x ; i++){
+
+            if (statut == 4){
+                d++;
+            }
+        }
+        printf("Le nombre total des reservations valides est : %d", d);
+    }
+
+
+        else{
+                printf("Entrez un choix valide.");
+
+        }
+
+
     break;
 
-case 7:
-
-    printf("vous avez quittez :\n");
-    return 0;
-
 case 8:
-    printf("vous avez quittez :\n");
+    printf("***vous avez quittez***\n");
     return 0;
 
-*/
-    default : printf("\n\n\n\n\n\nnombre incorrect. entrez un autre nombre valide\n\n\n\n\n\n");
-}
-}
 
+default : printf("\n\n\n\n\n\nnombre incorrect. entrez un autre nombre valide\n\n\n\n\n\n");
+}
+}
 
 
     return 0;
