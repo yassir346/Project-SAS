@@ -1,6 +1,7 @@
 //programme pour gestion des rendez-vous.
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main()
 {
@@ -21,13 +22,20 @@ int main()
     int found = 0;
 
     int ref_R;
-    int choix2;
     int ref_S;
     int ref_A;
 
+    int choix2;
+    int choix3;
+
+
+    char nom_t[20], prenom_t[20], number_t[20];
+    int age_t, statut_t, ref_t, day_t, month_t, year_t;
+
+
     //entré des 10 premiers variables *******************************************************************************
 
-    nom[4][20]='misbah';
+   /* nom[4][20]='misbah';
     prenom[4][20]='adil';
     number[4][20]='0655555555';
     age[4]=20;
@@ -75,7 +83,7 @@ int main()
     ref[3]=4;
     day[3]=4;
     month[3]=4;
-    year[3]=2025;
+    year[3]=2025;  */
 
 
     while(choix <= 8 || choix >= 8){
@@ -96,8 +104,8 @@ int main()
 
 case 1:
 
-    ref[x] = x+1;
-    printf("reff %d\n", ref[x]);
+    ref[x] = x+1; //Generation de la reference
+    printf("reference : %d\n", ref[x]);
     printf("entrez votre nom : ");
     scanf("%s", nom[x]);
     printf("entrez votre prenom : ");
@@ -107,11 +115,7 @@ case 1:
     printf("entrez votre age : ");
     scanf("%d", &age[x]);
     printf("entrez votre statut : \n1.valide.\n2.reporte.\n3.annule\n4.traite.\n");
-    scanf("%d", &statut[x]);
-
-
-
-
+    scanf("%d", &statut[x]); //le statut prend lesvaleurs : valide /
 
     printf("entrez la date (day/month/year) : \n");
     scanf("%d/%d/%d", &day[x], &month[x], &year[x]);
@@ -122,7 +126,7 @@ case 1:
 
     break;
 
-case 2:
+case 2: //la modification d'une reservation**************************************************************************
 
 
     printf("entrez la reference du reservation que vous voulez modifier : ");
@@ -131,68 +135,66 @@ case 2:
     for(int i = 0 ; i < x ; i++){
 
         if(ref_R == ref[i]){
+            printf("Veuillez choisir qu'est ce que vous voulez modifier :\n");
+            printf("1.nom. \n");
+            printf("2.prenom. \n");
+            printf("3.telephone. \n");
+            printf("4.age. \n");
+            printf("5.statut. \n");
+            printf("6.reference. \n");
+            printf("7.date de reservation. \n");
 
-            found++;
-            break;
-        }
-    }
-    if(found == 0) printf("\nReference non disponible.\n");
+            printf("veuillez entrer un choix pour modifier une valeur spécifique : ");
 
-    else{
-        printf("Veuillez choisir qu'est ce que vous voulez modifier :\n");
-        printf("1.nom. \n");
-        printf("2.prenom. \n");
-        printf("3.telephone. \n");
-        printf("4.age. \n");
-        printf("5.statut. \n");
-        printf("6.reference. \n");
-        printf("7.date de reservation. \n");
+            scanf("%d", &choix2);
 
-        printf("veuillez entrer un choix : ");
-        scanf("%d", &choix2);
+            switch(choix2){
+                    case 1:
+                    printf("entrer le nom à modifier: ");
+                    scanf("%s", &nom[i]);
+                    printf("le nom est à-jour\n");
+                    break;
 
-        switch(choix2){
-                case 1:
-                printf("entrer le nom à modifier: ");
-                scanf("%s", &nom[x]);
-                printf("le nom est à-jour\n");
+                    case 2:
+                    printf("entrer le prenom à modifier: ");
+                    scanf("%s", &prenom[i]);
+                    printf("le prenom est à-jour\n");
+                    break;
+
+                    case 3:
+                    printf("entrer le telephone à modifier: ");
+                    scanf("%s", &number[i]);
+                    printf("le telephone est à-jour\n");
+                    break;
+
+                    case 4:
+                    printf("entrer l'age à modifier: ");
+                    scanf("%d", &age[i]);
+                    printf("l'age est à-jour\n");
+                    break;
+
+                    case 5:
+                    printf("Modifier le statut: ");
+                    scanf("%d", &statut[i]);
+                    printf("le statut est à-jour\n");
+                    break;
+
+                    case 6:
+                        printf("Modifier la date : ");
+                        scanf("%d/%d/%d", &day[i], &month[i], &year[i]);
+                        printf("La date est à jour.\n");
+            }
+
+                found++;
                 break;
-
-                case 2:
-                printf("entrer le prenom à modifier: ");
-                scanf("%s", &prenom[x]);
-                printf("le prenom est à-jour\n");
-                break;
-
-                case 3:
-                printf("entrer le telephone à modifier: ");
-                scanf("%s", &number[x]);
-                printf("le telephone est à-jour\n");
-                break;
-
-                case 4:
-                printf("entrer l'age à modifier: ");
-                scanf("%d", &age[x]);
-                printf("l'age est à-jour\n");
-                break;
-
-                case 5:
-                printf("Modifier le statut: ");
-                scanf("%d", &statut[x]);
-                printf("le statut est à-jour\n");
-                break;
-
-                case 6:
-                    printf("Modifier la date : ");
-                    scanf("%d/%d/%d", &day[x], &month[x], &year[x]);
-                    printf("La date est à jour.\n");
+            }
         }
 
-    }
+                if(found == 0) printf("\nReference non disponible.\n");
 
-    break;
+                break;
 
-case 3:
+case 3: //la suppression d'une reservation***********************************************************************
 
     found = 0;
     printf("entrez le numero de reservation que vous voulez supprimer : ");
@@ -218,15 +220,12 @@ case 3:
             break;
 
         }
-
     }
-    if(found == 0) printf("reference n'est pas disponible.\n");
+    if(found == 0) printf("Reference n'est pas disponible.\n");
 
     break;
 
-
-
-case 4:
+case 4: //L'affichage des details d'une reservation*******************
 
     found = 0;
     printf("entrez la reference du reservation que vous voulez afficher : \n");
@@ -235,12 +234,12 @@ case 4:
     for ( int i = 0; i < x; i++){
 
         if(ref_A == ref[i]){
-            printf("le nom : %s\n", nom[x]);
-            printf("le prenom : %s\n", prenom[x]);
-            printf("le telephone : %s\n", number[x]);
-            printf("l'age : %d\n", age[x]);
-            printf("le reference : %d\n", ref[x]);
-            printf("la date : %d/%d/%d\n\n\n", day[x], month[x], year[x]);
+            printf("Le nom : %s\n", nom[i]);
+            printf("Le prenom : %s\n", prenom[i]);
+            printf("Le telephone : %s\n", number[i]);
+            printf("L'age : %d\n", age[i]);
+            printf("La reference : %d\n", ref[i]);
+            printf("La date : %d/%d/%d\n\n\n", day[i], month[i], year[i]);
             found++;
             break;
         }
@@ -250,29 +249,123 @@ case 4:
 
 
     break;
-/*
-case 5:
-    found=0;
-    printf("entrez l'auteur : ");
-    scanf("%s", &Rech_a);
-    printf("entrez le titre : ");
-    scanf("%s", &Rech_t);
-    printf("%d :\n", x);
 
-    for ( int i = 0; i < x; i++){
-        printf("%s :  %s :\n", t[i], a[i]);
-        if (strcmp(Rech_t, t[i])==0 && strcmp(Rech_a, a[i])==0){
-            printf("%s\n", t[i]);
-            printf("%s\n", a[i]);
-            printf("%.2f\n", prix[i]);
-            printf("%d\n", quantite[i]);
-            found=1;
-            break;
+case 5: //trier les reservations**********************************************************************
+
+        printf("Choisissez le type de tri :\n");
+        printf("1. Par statut\n");
+        printf("2. Par date\n");
+
+        printf("Entrez votre choix : ");
+        scanf("%d", &choix3);
+
+        switch(choix3){
+
+    case 1: //Tri par statut
+
+        for (int i = 0; i < x - 1; i++){
+            for (int j = 0; i < x; j++){
+
+                    if(statut[i] > statut[j]){
+
+                        statut_t = statut[i];
+                        statut[i] = statut[j];
+                        statut[j] = statut_t;
+
+                        strcpy (nom_t, nom[i]);
+                        strcpy (nom[i], nom[j]);
+                        strcpy (nom[j], nom_t);
+
+                        strcpy(prenom_t, prenom[i]);
+                        strcpy(prenom[i], prenom[j]);
+                        strcpy(prenom[j], prenom_t);
+
+                        strcpy(number_t, number[i]);
+                        strcpy(telephone[i], number[j]);
+                        strcpy(telephone[j], number_t);
+
+                        age_t = age[i];
+                        age[i] = age[j];
+                        age[j] = age_t;
+
+                        statut_t = statut[i];
+                        tut[i] = statut[j];
+                        atut[j] = statut_t;
+
+                        day_t = day[i];
+                        day[i] = day[j];
+                        day[j] = day_t;
+
+                        month_t = month[i];
+                        month[i] = month[j];
+                        month[j] = month_t;
+
+                        year_t = year[i];
+                        year[i] = year[j];
+                        year[j] = year_t;
+
+                        ref_t = ref[i];
+                        ref[i] = ref[j];
+                        ref[j] = ref_t;
+                }
+            }
         }
-    }
-        if(found==0) printf("le livre n'est pas disponible");
+            printf("Réservations triées par nom.\n");
+            break;
 
 
+
+            case 2: // Tri par Date
+
+                for (int i = 0; i < x - 1; i++){
+                    for (int j = 0; j < x; j++){
+                            if(year[i] > year[j] || year[i]==year[j] && month[i] > month[j] || year[i]==year[j] && month[i]==month[j] && day[i] > day[j]){
+                                                     statut_t = statut[i];
+                        stut[i] = statut[j];
+                        atut[j] = statut_t;
+
+                        strcpy (nom_t, nom[i]);
+                        strcpy (nom[i], nom[j]);
+                        strcpy (nom[j], nom_t);
+
+                        strcpy(prenom_t, prenom[i]);
+                        strcpy(prenom[i], prenom[j]);
+                        strcpy(prenom[j], prenom_t);
+
+                        strcpy(number_t, telephone[i]);
+                        strcpy(telephone[i], telephone[j]);
+                        strcpy(telephone[j], number_t);
+
+                        age_t = age[i];
+                        age[i] = age[j];
+                        age[j] = age_t;
+
+                        statut_t = statut[i];
+                        tut[i] = statut[j];
+                        atut[j] = statut_t;
+
+                        day_t = day[i];
+                        day[i] = day[j];
+                        day[j] = day_t;
+
+                        month_t = month[i];
+                        month[i] = month[j];
+                        month[j] = month_t;
+
+                        year_t = year[i];
+                        year[i] = year[j];
+                        year[j] = year_t;
+
+                        ref_t = ref[i];
+                        ref[i] = ref[j];
+                        ref[j] = ref_t;
+
+                }
+
+            }
+        }
+
+        }
 
     break;
 
