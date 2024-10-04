@@ -17,7 +17,7 @@ int main()
 
     int choix;
 
-    int x = 5;
+    int x = 10;
 
     int found = 0;
 
@@ -42,19 +42,10 @@ int main()
 
     //entré des 10 premiers variables *******************************************************************************
 
-   /* nom[4][20]='misbah';
-    prenom[4][20]='adil';
-    number[4][20]='0655555555';
-    age[4]=20;
-    statut[4]=1;
-    ref[4]=5;
-    day[4]=1;
-    month[4]=1;
-    year[4]=2020;
 
-    nom[0]='misa';
-    prenom[0]='nawfal';
-    number[0][20]='0611111111';
+    strcpy(nom[0],"Miah");
+    strcpy(prenom[0],"Ahlam");
+    strcpy(number[0],"0611111111");
     age[0]=20;
     statut[0]=1;
     ref[0]=1;
@@ -62,19 +53,19 @@ int main()
     month[0]=1;
     year[0]=2020;
 
-    nom[1][20]='gandi';
-    prenom[1][20]='salim';
-    number[1][20]='0622222222';
+    strcpy(nom[1],"Ayoub");
+    strcpy(prenom[1],"Hitaf");
+    strcpy(number[1],"0622222222");
     age[1]=30;
-    statut[1]=1;
+    statut[1]=4;
     ref[1]=2;
-    day[1]=2;
+    day[1]=14;
     month[1]=2;
-    year[1]=2020;
+    year[1]=2017;
 
-    nom[2][20]='kamili';
-    prenom[2][20]='kamal';
-    number[2][20]='0633333333';
+    strcpy(nom[2],"Bachir");
+    strcpy(prenom[2],"Tiki");
+    strcpy(number[2],"0633333333");
     age[2]=40;
     statut[2]=2;
     ref[2]=3;
@@ -82,15 +73,79 @@ int main()
     month[2]=3;
     year[2]=2023;
 
-    nom[3][20]='jalil';
-    prenom[3][20]='jelloul';
-    number[0][20]='0644444444';
+    strcpy(nom[3],"Nawal");
+    strcpy(prenom[3],"Souma");
+    strcpy(number[3],"0644444444");
     age[3]=45;
     statut[3]=3;
     ref[3]=4;
     day[3]=4;
     month[3]=4;
-    year[3]=2025;  */
+    year[3]=2025;
+
+    strcpy(nom[4],"Misbah");
+    strcpy(prenom[4],"Adil");
+    strcpy(number[4],"0655555555");
+    age[4]=19;
+    statut[4]=1;
+    ref[4]=5;
+    day[4]=1;
+    month[4]=1;
+    year[4]=2020;
+
+    strcpy(nom[5],"Kamal");
+    strcpy(prenom[5],"Raya");
+    strcpy(number[5],"0666666666");
+    age[5]=20;
+    statut[5]=1;
+    ref[5]=6;
+    day[5]=30;
+    month[5]=9;
+    year[5]=2012;
+
+    strcpy(nom[6],"Amir");
+    strcpy(prenom[6],"Gita");
+    strcpy(number[6],"0677777777");
+    age[6]=28;
+    statut[6]=3;
+    ref[6]=7;
+    day[6]=5;
+    month[6]=12;
+    year[6]=2023;
+
+    strcpy(nom[7],"Hidaya");
+    strcpy(prenom[7],"Houdini");
+    strcpy(number[7],"0688888888");
+    age[7]=36;
+    statut[7]=2;
+    ref[7]=8;
+    day[7]=11;
+    month[7]=5;
+    year[7]=2018;
+
+    strcpy(nom[8],"Widad");
+    strcpy(prenom[8],"Kira");
+    strcpy(number[8],"0698765432");
+    age[8]=12;
+    statut[8]=2;
+    ref[8]=9;
+    day[8]=16;
+    month[8]=3;
+    year[8]=2021;
+
+    strcpy(nom[9],"Ayman");
+    strcpy(prenom[9],"Tais");
+    strcpy(number[9],"0612345678");
+    age[9]=35;
+    statut[9]=4;
+    ref[9]=10;
+    day[9]=24;
+    month[9]=7;
+    year[9]=2015;
+
+
+
+
 
 
     while(choix != 8){
@@ -102,7 +157,7 @@ int main()
         printf("5. Trier les reservation.\n");
         printf("6. Rechercher une reservation.\n");
         printf("7. Statistiques\n");
-        printf("8. quitter le programm.\n\n\n\n");
+        printf("8. quitter le programme.\n\n\n\n");
 
         printf(" entrez un choix : ");
         scanf("%d", &choix);
@@ -111,7 +166,7 @@ int main()
 
 case 1:
 
-    ref[x] = x+1; //Generation de la reference
+    ref[x] = x+1; //Generation de la reference********************************************************
     printf("reference : %d\n", ref[x]);
     printf("entrez votre nom : ");
     scanf("%s", nom[x]);
@@ -122,7 +177,7 @@ case 1:
     printf("entrez votre age : ");
     scanf("%d", &age[x]);
     printf("entrez votre statut : \n1.valide.\n2.reporte.\n3.annule\n4.traite.\n");
-    scanf("%d", &statut[x]); //le statut prend lesvaleurs : valide /
+    scanf("%d", &statut[x]);
 
     printf("entrez la date (day/month/year) : \n");
     scanf("%d/%d/%d", &day[x], &month[x], &year[x]);
@@ -232,7 +287,7 @@ case 3: //la suppression d'une reservation**************************************
 
     break;
 
-case 4: //L'affichage des details d'une reservation*******************
+case 4: //L'affichage des details d'une reservation**********************************************************
 
     found = 0;
     printf("entrez la reference du reservation que vous voulez afficher : \n");
@@ -271,7 +326,7 @@ case 5: //trier les reservations************************************************
     case 1: //Tri par statut
 
         for (int i = 0; i < x - 1; i++){
-            for (int j = 0; i < x; j++){
+            for (int j = 0; j < x; j++){
 
                     if(statut[i] > statut[j]){
 
@@ -373,6 +428,7 @@ case 5: //trier les reservations************************************************
         }
 
         }
+                printf("Réservations triées par nom.\n");
 
     break;
 
@@ -399,8 +455,8 @@ case 7://Les statistiques*******************************************************
 
     printf("Quelles Statistiques voudriez-vous afficher :\n");
     printf("La moyenne d'age.\n");
-    printf("Afficher le nombre de patients par tranche d'âge");
-    printf("le nombre total de réservations par statut");
+    printf("Afficher le nombre de patients par tranche d'âge\n");
+    printf("le nombre total de réservations par statut\n");
     printf("Entrez un choix : ");
     scanf("%d", &choix4);
 
@@ -416,7 +472,7 @@ case 7://Les statistiques*******************************************************
 
     }
 
-    else if(choix == 2){
+    else if(choix4 == 2){
 
         a = 0;
         b = 0;
@@ -450,7 +506,7 @@ case 7://Les statistiques*******************************************************
 
         for(int i = 0 ; i < x ; i++){
 
-            if (statut == 1){
+            if (statut[i] == 1){
                 a++;
             }
         }
@@ -458,7 +514,7 @@ case 7://Les statistiques*******************************************************
 
         for(int i = 0 ; i < x ; i++){
 
-            if (statut == 2){
+            if (statut[i] == 2){
                 b++;
             }
         }
@@ -466,7 +522,7 @@ case 7://Les statistiques*******************************************************
 
         for(int i = 0 ; i < x ; i++){
 
-            if (statut == 3){
+            if (statut[i] == 3){
                 c++;
             }
         }
@@ -474,7 +530,7 @@ case 7://Les statistiques*******************************************************
 
         for(int i = 0 ; i < x ; i++){
 
-            if (statut == 4){
+            if (statut[i] == 4){
                 d++;
             }
         }
