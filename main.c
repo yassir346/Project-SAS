@@ -428,7 +428,7 @@ case 5: //trier les reservations************************************************
         }
 
         }
-                printf("Réservations triées par nom.\n");
+                printf("Réservations triées par date.\n");
 
     break;
 
@@ -444,12 +444,12 @@ case 6://rechercher une reservation*********************************************
         if(ref_rech == ref[i]){
 
             found++;
-            printf("Une reservation est trouvée avec la reference dont vous avez recherché.\nCliquez sur le choix 4 pour afficher ces details.\n");
+            printf("Une reservation est trouvée avec la reference dont vous avez recherché.\nCliquez sur le choix 4 pour afficher ces details.\n\n\n");
             break;
         }
     }
 
-
+        break;
 case 7://Les statistiques***************************************************************************************************
 
 
